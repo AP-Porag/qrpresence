@@ -1,0 +1,237 @@
+// datatable
+
+
+
+div.dataTables_wrapper {
+    div.dataTables_filter {
+        text-align: right;
+
+        @media (max-width: 767px) {
+            text-align: center;
+        }
+
+
+        input {
+            margin-left: 0.5em;
+            margin-right: 0;
+        }
+    }
+}
+
+.datatable {
+    td {
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"] {
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+}
+
+
+.table.dataTable {
+    thead {
+
+        .sorting,
+        .sorting_asc,
+        .sorting_desc,
+        .sorting_asc_disabled,
+        .sorting_desc_disabled {
+            &:before {
+                left: auto;
+                right: 1em;
+            }
+        }
+
+        .sorting,
+        .sorting_asc,
+        .sorting_desc,
+        .sorting_asc_disabled,
+        .sorting_desc_disabled {
+            &:after {
+                left: auto;
+                right: 0.5em;
+            }
+        }
+
+        tr {
+
+            th,
+            td {
+
+                &.sorting_asc,
+                &.sorting_desc,
+                &.sorting {
+                    padding-left: 12px;
+                    padding-right: 30px;
+                }
+            }
+        }
+    }
+}
+
+.table,
+table {
+    &.dataTable {
+        &.dtr-inline.collapsed>tbody>tr>td {
+            position: relative;
+
+            &.dtr-control {
+                padding-left: 30px;
+
+                &:before {
+                    top: 50%;
+                    left: 5px;
+                    height: 14px;
+                    width: 14px;
+                    margin-top: -9px;
+                    display: block;
+                    position: absolute;
+                    color: $white;
+                    border: 2px solid $white;
+                    border-radius: 14px;
+                    box-sizing: content-box;
+                    text-align: center;
+                    text-indent: 0 !important;
+                    line-height: 14px;
+                    content: '+';
+                    background-color: $primary;
+                }
+            }
+        }
+    }
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.6em 0.6em;
+    font-size: 70%;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 2.25rem;
+    /* font-size: 10px; */
+}
+
+table {
+    &.dataTable {
+        color: #5b626b;
+        vertical-align: top;
+        border-color: #e9ecef;
+        width: 100% !important;
+        margin: 15px 0px !important;
+
+        tr {
+            th {
+                background-color: #eff2f7;
+                border-bottom: #e9ecef !important;
+                font-weight: normal !important;
+            }
+
+            td {
+                border-width: 1px;
+            }
+        }
+
+        &.no-footer {
+            border-bottom: #e9ecef !important;
+        }
+    }
+}
+
+
+.dataTables_wrapper {
+    .dataTables_paginate {
+        .paginate_button {
+
+            &.next {
+
+                &:hover,
+                &:active {
+                    background: transparent !important;
+                    border: 1px solid #ff64a1;
+                    color: #ff64a1 !important;
+                }
+            }
+        }
+
+        span {
+            .paginate_button {
+                box-sizing: border-box;
+                display: inline-block;
+                min-width: 1.5em;
+                padding: 0;
+                width: 40px;
+                height: 40px;
+                line-height: 38px;
+                border-radius: 50%;
+                margin-left: 2px;
+                font-weight: 600;
+                text-align: center;
+                text-decoration: none !important;
+                cursor: pointer;
+                *cursor: hand;
+                color: #333 !important;
+                border: 1px solid transparent;
+                transition: all linear .4s;
+                background: transparent;
+
+
+
+                &:hover {
+                    background-color: #ff64a1;
+                    background: #ff64a1;
+                    border: 1px solid #ff64a1;
+                }
+
+                &.current {
+                    background-color: #5a4ffd;
+                    color: #fff !important;
+
+                    &:hover {
+                        background-color: #ff64a1;
+                    }
+                }
+            }
+        }
+    }
+}
+ 
+.dataTables_wrapper {
+    padding: 21px 0;
+    .dt-buttons {
+        .dt-button {  
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+    }
+}
+
+.dataTables_length {
+    select {
+        border: 1px solid #e9ecef;
+    }
+    margin-top: 10px!important;
+    padding-top: 0!important;
+    padding: 0 10px 0 10px;
+}
+
+.menu-builder-btn {
+    background-color: #FF64A1!important;
+    border-color: #FF64A1!important;
+    color: #fff;
+    &:hover {
+        color: #fff;
+    }
+}
