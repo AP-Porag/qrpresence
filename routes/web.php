@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Course\CourseController;
 use App\Http\Controllers\Admin\Profile\UserProfileController;
 use App\Http\Controllers\Admin\User\UsersController;
 use App\Http\Controllers\HomeController;
@@ -49,6 +50,9 @@ Route::prefix('instructor')->as('instructor.')->group(function () {
 
     // USER
     Route::resource('users', UsersController::class);
+
+    // course
+    Route::resource('courses', CourseController::class);
     // PROFILE
     Route::get('/profile', [UserProfileController::class, 'index'])->name('profile.info');
 

@@ -14,6 +14,12 @@
                     </a>
                 </li>
 
+                <li class="{{ request()->is('instructor/courses*') ? 'mm-active' : '' }}">
+                    <a href="{{route('instructor.courses.index')}}" class="waves-effect {{ request()->is('instructor/courses*') ? 'mm-active' : '' }}">
+                        <i class="fa fa-book"></i><span> Courses </span>
+                    </a>
+                </li>
+
 {{--                <li--}}
 {{--                    class="{{ request()->is('admin/users*') ? 'mm-active' : '' }}">--}}
 {{--                    <a href="javascript: void(0);"--}}
