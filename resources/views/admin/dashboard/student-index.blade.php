@@ -2,7 +2,12 @@
 
 
 @section('content')
-<h1>Student Dashboard</h1>
+<div class="">
+    <div class="d-flex justify-content-between">
+        <h1>Student Dashboard</h1>
+        <a href="{{ route('student.attendance.scan') }}" class="btn btn-primary pt-3">Scan Attendance</a>
+    </div>
+</div>
 @endsection
 
 @push('style')

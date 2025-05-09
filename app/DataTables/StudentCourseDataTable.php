@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class CourseDataTable extends DataTable
+class StudentCourseDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -24,18 +24,18 @@ class CourseDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($item) {
                 $buttons = '';
-                 $buttons .= '<a class="dropdown-item" href="' . route('instructor.courses.edit', $item->id) . '" title="Edit"><i class="mdi mdi-square-edit-outline"></i> Edit </a>';
+//                $buttons .= '<a class="dropdown-item" href="' . route('instructor.courses.edit', $item->id) . '" title="Edit"><i class="mdi mdi-square-edit-outline"></i> Edit </a>';
 
-                $buttons .= '<a class="dropdown-item" href="' . route('instructor.qr.generate', $item->id) . '" title="Edit"><i class="fas fa-qrcode"></i> Generate QR Code </a>';
+                $buttons .= '<a class="dropdown-item" href="' . route('student.qr.display', $item->id) . '" title="Edit"><i class="fas fa-qrcode"></i> Show QR Code </a>';
 
 //                 $buttons .= '<a class="dropdown-item" href="' . route('admin.qr.code', $item->id) . '" title="Edit"><i class="fas fa-qrcode"></i> Generate QR Code </a>';
 
                 // TO-DO: need to chnage the super admin ID to 1, while Super admin ID will 1
-                 $buttons .= '<form action="' . route('instructor.courses.destroy', $item->id) . '"  id="delete-form-' . $item->id . '" method="post" style="">
-                 <input type="hidden" name="_token" value="' . csrf_token() . '">
-                 <input type="hidden" name="_method" value="DELETE">
-                 <button class="dropdown-item text-danger" onclick="return makeDeleteRequest(event, ' . $item->id . ')"  type="submit" title="Delete"><i class="mdi mdi-trash-can-outline"></i> Delete</button></form>
-                 ';
+//                $buttons .= '<form action="' . route('instructor.courses.destroy', $item->id) . '"  id="delete-form-' . $item->id . '" method="post" style="">
+//                 <input type="hidden" name="_token" value="' . csrf_token() . '">
+//                 <input type="hidden" name="_method" value="DELETE">
+//                 <button class="dropdown-item text-danger" onclick="return makeDeleteRequest(event, ' . $item->id . ')"  type="submit" title="Delete"><i class="mdi mdi-trash-can-outline"></i> Delete</button></form>
+//                 ';
                 return '<div class="btn-group dropleft">
                 <a href="#" onclick="return false;" class="btn btn-sm btn-dark text-white dropdown-toggle dropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu">
@@ -54,7 +54,7 @@ class CourseDataTable extends DataTable
      */
     public function query(Course $model): QueryBuilder
     {
-        return $model->newQuery()->where('instructor_id','=',auth()->user()->id)->orderBy('id', 'ASC')->select('courses.*');
+        return $model->newQuery()->orderBy('id', 'ASC')->select('courses.*');
     }
 
     /**

@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\Course\CourseController;
 use App\Http\Controllers\Admin\Profile\UserProfileController;
+use App\Http\Controllers\Admin\QRCode\QRCodeController;
 use App\Http\Controllers\Admin\User\UsersController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Student\Course\StudentCourseController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +55,9 @@ Route::prefix('instructor')->as('instructor.')->group(function () {
 
     // course
     Route::resource('courses', CourseController::class);
+
+    // QR Code
+    Route::get('/qr/generate/{courseId}', [QRCodeController::class, 'generate'])->name('qr.generate');
     // PROFILE
     Route::get('/profile', [UserProfileController::class, 'index'])->name('profile.info');
 
@@ -63,6 +68,15 @@ Route::prefix('student')->as('student.')->group(function () {
 
     // USER
     Route::resource('users', UsersController::class);
+
+    // course
+    Route::resource('courses', StudentCourseController::class);
+
+    // QR Code
+    Route::get('/qr/display/{courseId}', [QRCodeController::class, 'show'])->name('qr.display');
+    Route::get('/attendance/scan', [QRCodeController::class, 'scanPage'])->name('attendance.scan');
+    Route::post('/attendance/submit', [QRCodeController::class, 'submit'])->name('attendance.submit');
+
     // PROFILE
     Route::get('/profile', [UserProfileController::class, 'index'])->name('profile.info');
 
