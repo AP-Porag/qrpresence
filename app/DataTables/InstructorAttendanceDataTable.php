@@ -33,7 +33,7 @@ class InstructorAttendanceDataTable extends DataTable
                 return $item->instructor->first_name . ' ' . $item->instructor->last_name;
             })
             ->editColumn('scanned_at', function ($item) {
-                return $item->scanned_at;
+                return \Carbon\Carbon::parse($item->scanned_at)->format('F j, Y g:i A');
             })
             ->rawColumns(['student_id','course_id','scanned_at','instructor_id'])
             ->setRowId('id');

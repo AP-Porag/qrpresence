@@ -112,7 +112,7 @@
 {{--                                                </label>--}}
 {{--                                            </div>--}}
 {{--                                        </div>--}}
-                                        <div class="offset-6 col-sm-6 text-end">
+                                        <div class="offset-md-6 col-sm-6 text-end">
                                             <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Sign Up</button>
                                         </div>
 

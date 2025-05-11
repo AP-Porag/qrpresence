@@ -16,7 +16,8 @@ class QRCodeController extends Controller
 {
     public function generate($courseId) {
         $token = Str::random(16);
-        $expiresAt = now()->addMinutes(15);
+//        $expiresAt = now()->addMinutes(15);
+        $expiresAt = now()->addDays(1);
 
         $qr = QCode::create([
             'course_id' => $courseId,
@@ -102,22 +103,32 @@ class QRCodeController extends Controller
             'lng' => 'required|numeric',
         ]);
 
-        $qrCodeValue = $request->input('qr_code');
+        // Extract token from full URL
+        $qrCodeUrl = $request->input('qr_code');
+        $parsedUrl = parse_url($qrCodeUrl);
+        parse_str($parsedUrl['query'] ?? '', $queryParams);
+        $token = $queryParams['token'] ?? null;
 
-        $qr = QCode::where('code', $qrCodeValue)->whereDate('created_at', Carbon::today())->first();
-        $instructor_id = Course::where('id', $qr->course_id)->first()->instructor_id;
+        if (!$token) {
+            return response()->json(['message' => 'Invalid QR code. Token missing.'], 400);
+        }
+
+        $qr = QCode::where('token', $token)->whereDate('created_at', Carbon::today())->first();
 
         if (!$qr) {
             return response()->json(['message' => 'Invalid or expired QR code.'], 400);
         }
 
+        $instructor_id = Course::where('id', $qr->course_id)->value('instructor_id');
+
         // OPTIONAL: Location check — must be within 2km
         $campusLat = 12.345678;
         $campusLng = 98.765432;
         $distance = $this->calculateDistance($campusLat, $campusLng, $request->lat, $request->lng);
-//        if ($distance > 2) {
-//            return response()->json(['message' => 'You must be near campus to mark attendance.'], 400);
-//        }
+
+        // if ($distance > 2) {
+        //     return response()->json(['message' => 'You must be near campus to mark attendance.'], 400);
+        // }
 
         // Save attendance
         Attendance::create([
