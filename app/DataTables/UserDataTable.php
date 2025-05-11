@@ -51,7 +51,7 @@ class UserDataTable extends DataTable
                 $sql = "CONCAT(users.first_name,'-',users.last_name)  like ?";
                 $query->whereRaw($sql, ["%{$keyword}%"]);
             })
-            ->rawColumns(['action', 'avatar', 'status','user_type'])
+            ->rawColumns([ 'avatar', 'status','user_type'])
             ->setRowId('id');
 
     }
@@ -75,8 +75,8 @@ class UserDataTable extends DataTable
                     ->minifiedAjax()
                     //->dom('Bfrtip')
                     ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->addAction(['width' => '55px', 'class' => 'text-center', 'printable' => false, 'exportable' => false, 'title' => 'Action']);
+                    ->selectStyleSingle();
+//                    ->addAction(['width' => '55px', 'class' => 'text-center', 'printable' => false, 'exportable' => false, 'title' => 'Action']);
 //             ->buttons([
 //                        Button::make('excel'),
 //                        Button::make('csv'),

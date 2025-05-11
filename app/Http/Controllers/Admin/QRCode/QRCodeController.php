@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\QRCode;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attendance;
+use App\Models\Course;
 use App\Models\QCode;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -104,6 +105,7 @@ class QRCodeController extends Controller
         $qrCodeValue = $request->input('qr_code');
 
         $qr = QCode::where('code', $qrCodeValue)->whereDate('created_at', Carbon::today())->first();
+        $instructor_id = Course::where('id', $qr->course_id)->first()->instructor_id;
 
         if (!$qr) {
             return response()->json(['message' => 'Invalid or expired QR code.'], 400);
@@ -121,6 +123,7 @@ class QRCodeController extends Controller
         Attendance::create([
             'student_id' => Auth::id(),
             'course_id' => $qr->course_id,
+            'instructor_id' => $instructor_id,
             'scanned_at' => Carbon::today(),
             'distance' => $distance,
         ]);

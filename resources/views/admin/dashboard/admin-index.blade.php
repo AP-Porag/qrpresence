@@ -2,7 +2,12 @@
 
 
 @section('content')
-<h1>Admin Dashboard</h1>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title mb-3">Attendance</h4>
+            {!! $dataTable->table(['class'=>'table-responsive']) !!}
+        </div>
+    </div>
 @endsection
 
 @push('style')
@@ -10,13 +15,6 @@
 @endpush
 
 @push('script')
-    <!-- Chart JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    {{-- <script src="{{ asset('/admin/js/Chart.bundle.min.js') }}"></script>
-    <script src="{{ asset('/admin/js/chartjs.init.js') }}"></script> --}}
-
-    <script>
-
-    </script>
+    @include('includes.scripts.datatable')
 @endpush
 

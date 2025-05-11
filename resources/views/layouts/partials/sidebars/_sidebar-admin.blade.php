@@ -14,28 +14,26 @@
                     </a>
                 </li>
 
-{{--                <li--}}
-{{--                    class="{{ request()->is('admin/users*') ? 'mm-active' : '' }}">--}}
-{{--                    <a href="javascript: void(0);"--}}
-{{--                       class="has-arrow waves-effect {{ request()->is('admin/users*') ? 'mm-active' : '' }}">--}}
-{{--                        <i class="fas fa-users"></i>--}}
-{{--                        <span>Administration</span>--}}
+                <li
+                    class="{{ request()->is('admin/users*') ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);"
+                       class="has-arrow waves-effect {{ request()->is('admin/users*') ? 'mm-active' : '' }}">
+                        <i class="fas fa-users"></i>
+                        <span>Administration</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li class="{{ request()->is('admin/users*') ? 'mm-active' : '' }}">
+                            <a href="{{ route('admin.users.index') }}"
+                               class="{{ request()->routeIs('admin.users.index') ? 'active' : '' }}">
+                                Users
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+{{--                <li class="{{ request()->is('instructor/courses*') ? 'mm-active' : '' }}">--}}
+{{--                    <a href="{{route('instructor.courses.index')}}" class="waves-effect {{ request()->is('instructor/courses*') ? 'mm-active' : '' }}">--}}
+{{--                        <i class="fa fa-book"></i><span> Courses </span>--}}
 {{--                    </a>--}}
-{{--                    <ul class="sub-menu" aria-expanded="true">--}}
-{{--                        <li class="{{ request()->is('admin/users*') ? 'mm-active' : '' }}">--}}
-{{--                            <a href="{{ route('admin.users.index') }}"--}}
-{{--                               class="{{ request()->routeIs('admin.users.index') ? 'active' : '' }}">--}}
-{{--                                Users--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-
-{{--                        --}}{{--                            <li class="{{ request()->is('admin/mentors*') ? 'mm-active' : '' }}">--}}
-{{--                        --}}{{--                                <a href="{{ route('admin.mentors.index') }}"--}}
-{{--                        --}}{{--                                   class="{{ (request()->routeIs('admin.mentors.index') || request()->routeIs('admin.mentors.create') || request()->routeIs('admin.mentors.edit')) ? 'active' : '' }}">--}}
-{{--                        --}}{{--                                    Mentor--}}
-{{--                        --}}{{--                                </a>--}}
-{{--                        --}}{{--                            </li>--}}
-{{--                    </ul>--}}
 {{--                </li>--}}
 
             </ul>
