@@ -135,7 +135,7 @@ class QRCodeController extends Controller
             'student_id' => Auth::id(),
             'course_id' => $qr->course_id,
             'instructor_id' => $instructor_id,
-            'scanned_at' => Carbon::today(),
+            'scanned_at' => Carbon::now(),
             'distance' => $distance,
         ]);
 

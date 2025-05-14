@@ -58,6 +58,7 @@ Route::prefix('instructor')->as('instructor.')->group(function () {
 
     // QR Code
     Route::get('/qr/generate/{courseId}', [QRCodeController::class, 'generate'])->name('qr.generate');
+    Route::get('/qr/display/{courseId}', [QRCodeController::class, 'show'])->name('qr.display');
     // PROFILE
     Route::get('/profile', [UserProfileController::class, 'index'])->name('profile.info');
 
